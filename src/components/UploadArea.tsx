@@ -83,7 +83,7 @@ export const UploadArea = ({ onFilesSelected }: UploadAreaProps) => {
         <div className="flex items-center gap-2 text-white/30 text-xs">
           <span>支持所有文件类型</span>
           <span className="w-1 h-1 bg-white/30 rounded-full" />
-          <span>单个文件最大 10MB</span>
+          <span>单个文件最大 1MB</span>
         </div>
       </div>
     </div>

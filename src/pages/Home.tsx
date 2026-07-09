@@ -34,8 +34,8 @@ export const Home = () => {
     setUploadError(null);
 
     for (const file of selectedFiles) {
-      if (file.size > 10 * 1024 * 1024) {
-        setUploadError('文件大小不能超过 10MB');
+      if (file.size > 1 * 1024 * 1024) {
+        setUploadError('文件大小不能超过 1MB');
         continue;
       }
 
