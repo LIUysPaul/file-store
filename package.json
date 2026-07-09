@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check": "tsc -b --noEmit"
+    "check": "tsc -b --noEmit",
+    "deploy": "npm run build && npm run deploy:gh",
+    "deploy:gh": "git checkout --orphan gh-pages-tmp && git rm -rf . && cp dist/index.html . && cp dist/favicon.svg . && cp -r dist/assets . && touch .nojekyll && git add index.html favicon.svg assets .nojekyll && git commit -m \"deploy\" && git push origin gh-pages-tmp:gh-pages --force && git checkout main && git branch -D gh-pages-tmp"
   },
   "dependencies": {
     "clsx": "^2.1.1",
