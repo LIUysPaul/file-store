@@ -1,6 +1,8 @@
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "@/pages/Home";
 import { Login } from "@/pages/Login";
+import { Games } from "@/pages/Games";
+import { GameEmbed } from "@/pages/GameEmbed";
 import { useAuthStore } from "@/stores/authStore";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -43,6 +45,8 @@ export default function App() {
             </PublicRoute>
           } 
         />
+        <Route path="/games" element={<Games />} />
+        <Route path="/game/:id" element={<GameEmbed />} />
       </Routes>
     </Router>
   );

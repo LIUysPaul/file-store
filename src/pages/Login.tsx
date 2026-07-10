@@ -2,7 +2,8 @@ import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/stores/authStore';
 import { verifyToken, getRepoInfo, verifyRepoWriteAccess } from '@/utils/githubApi';
-import { FileText, Key, Github, Eye, EyeOff, ArrowRight, HelpCircle, ExternalLink, CheckCircle, XCircle } from 'lucide-react';
+import { FileText, Key, Github, Eye, EyeOff, ArrowRight, HelpCircle, ExternalLink, CheckCircle, XCircle, Gamepad2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -230,6 +231,16 @@ export const Login = () => {
               </div>
             )}
           </div>
+        </div>
+
+        <div className="mt-6 text-center">
+          <Link
+            to="/games"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl text-white/60 hover:text-white/80 text-sm transition-all duration-300"
+          >
+            <Gamepad2 className="w-4 h-4" />
+            <span>🎮 游玩小游戏（无需登录）</span>
+          </Link>
         </div>
       </div>
     </div>
