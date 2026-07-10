@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run verify-router && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
-    "deploy": "npm run build && npm run deploy:gh",
+    "verify-router": "bash scripts/verify-router.sh",
+    "setup-hooks": "cp scripts/pre-commit-router-check.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit && echo '✅ pre-commit hook 已安装'",
+    "deploy": "npm run verify-router && npm run build && npm run deploy:gh",
     "deploy:gh": "git checkout --orphan gh-pages-tmp && git rm -rf . && cp dist/index.html . && cp dist/favicon.svg . && cp -r dist/assets . && touch .nojekyll && git add index.html favicon.svg assets .nojekyll && git commit -m \"deploy\" && git push origin gh-pages-tmp:gh-pages --force && git checkout main && git branch -D gh-pages-tmp"
   },
   "dependencies": {
