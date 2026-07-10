@@ -72,77 +72,83 @@ export function Games() {
             <p className="text-slate-400">3 games, pure HTML5 Canvas, zero dependencies</p>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {games.map((game, index) => {
-            const Icon = game.icon;
-            return (
-              <div
-                key={game.id}
-                onClick={() => navigate(`/game/${game.id}`)}
-                className={`group cursor-pointer rounded-xl p-6 ${game.bgColor} border ${game.borderColor} hover:border-opacity-60 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg`}
-                style={{
-                  borderTop: `3px solid ${game.color}`,
-                  boxShadow: `0 0 20px ${game.color}15`,
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${game.color}22` }}
-                  >
-                    <Icon className="w-6 h-6" style={{ color: game.color }} />
-                  </div>
-                  <span className="text-xs text-slate-500 font-mono">#{String(index + 1).padStart(2, "0")}</span>
-                </div>
-
-                <h2
-                  className="text-lg font-bold mb-1"
-                  style={{ color: game.color }}
-                >
-                  {game.title}
-                </h2>
-                <p className="text-xs text-slate-500 mb-3">{game.subtitle}</p>
-                <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                  {game.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {game.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-1 rounded bg-white/5 text-slate-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  className="w-full py-2 rounded-lg text-sm font-medium transition-colors"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {games.map((game, index) => {
+              const Icon = game.icon;
+              return (
+                <div
+                  key={game.id}
+                  onClick={() => navigate(`/game/${game.id}`)}
+                  className={`group cursor-pointer rounded-xl p-6 ${game.bgColor} border ${game.borderColor} hover:border-opacity-60 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg`}
                   style={{
-                    backgroundColor: `${game.color}22`,
-                    color: game.color,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = `${game.color}33`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = `${game.color}22`;
+                    borderTop: `3px solid ${game.color}`,
+                    boxShadow: `0 0 20px ${game.color}15`,
                   }}
                 >
-                  PLAY ▶
-                </button>
-              </div>
-            );
-          })}
-        </div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div
+                      className="w-12 h-12 rounded-lg flex items-center justify-center"
+                      style={{ backgroundColor: `${game.color}22` }}
+                    >
+                      <Icon className="w-6 h-6" style={{ color: game.color }} />
+                    </div>
+                    <span className="text-xs text-slate-500 font-mono">
+                      #{String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
 
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5">
-            <span className="text-xs text-slate-500">TECH STACK</span>
-            <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">HTML5 Canvas</span>
-            <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">Vanilla JS</span>
-            <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">No Framework</span>
+                  <h2 className="text-lg font-bold mb-1" style={{ color: game.color }}>
+                    {game.title}
+                  </h2>
+                  <p className="text-xs text-slate-500 mb-3">{game.subtitle}</p>
+                  <p className="text-sm text-slate-300 mb-4 leading-relaxed">
+                    {game.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {game.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-1 rounded bg-white/5 text-slate-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <button
+                    className="w-full py-2 rounded-lg text-sm font-medium transition-colors"
+                    style={{
+                      backgroundColor: `${game.color}22`,
+                      color: game.color,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = `${game.color}33`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = `${game.color}22`;
+                    }}
+                  >
+                    PLAY ▶
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5">
+              <span className="text-xs text-slate-500">TECH STACK</span>
+              <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">
+                HTML5 Canvas
+              </span>
+              <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">
+                Vanilla JS
+              </span>
+              <span className="text-xs text-slate-400 px-2 py-1 rounded border border-slate-700">
+                No Framework
+              </span>
+            </div>
           </div>
         </div>
       </div>
