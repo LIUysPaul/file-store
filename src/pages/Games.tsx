@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Gamepad2, Sword, Zap, Rocket } from "lucide-react";
+import { Gamepad2, Sword, Zap, Rocket, ArrowLeft } from "lucide-react";
+import { useAuthStore } from "@/stores/authStore";
 
 const games = [
   {
@@ -39,17 +40,37 @@ const games = [
 
 export function Games() {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
+
+  const handleGoBack = () => {
+    navigate(user ? "/" : "/login");
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-purple-500/20 mb-4">
-            <Gamepad2 className="w-8 h-8 text-purple-400" />
-          </div>
-          <h1 className="text-3xl font-bold text-white mb-2">PIXEL GAMES</h1>
-          <p className="text-slate-400">3 games, pure HTML5 Canvas, zero dependencies</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <button
+            onClick={handleGoBack}
+            className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="text-sm">返回{user ? "主页" : "登录"}</span>
+          </button>
+          <div className="text-white font-bold">FileStore</div>
+          <div className="w-24"></div>
         </div>
+      </div>
+
+      <div className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-purple-500/20 mb-4">
+              <Gamepad2 className="w-8 h-8 text-purple-400" />
+            </div>
+            <h1 className="text-3xl font-bold text-white mb-2">PIXEL GAMES</h1>
+            <p className="text-slate-400">3 games, pure HTML5 Canvas, zero dependencies</p>
+          </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {games.map((game, index) => {
